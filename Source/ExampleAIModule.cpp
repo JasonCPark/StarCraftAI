@@ -7,7 +7,7 @@ using namespace Filter;
 void ExampleAIModule::onStart()
 {
   // Hello World!
-  Broodwar->sendText("Hello world!");
+  Broodwar->sendText("Hello Aiur!");
 
   // Print the map name.
   // BWAPI returns std::string when retrieving a string, don't forget to add .c_str() when printing!
@@ -17,7 +17,7 @@ void ExampleAIModule::onStart()
   Broodwar->enableFlag(Flag::UserInput);
 
   // Uncomment the following line and the bot will know about everything through the fog of war (cheat).
-  //Broodwar->enableFlag(Flag::CompleteMapInformation);
+  Broodwar->enableFlag(Flag::CompleteMapInformation); // Temporary, until proper scouting is implemented
 
   // Set the command optimization level so that common commands can be grouped
   // and reduce the bot's APM (Actions Per Minute).
@@ -103,6 +103,28 @@ void ExampleAIModule::onFrame()
     // If the unit is a worker unit
     if ( u->getType().isWorker() )
     {
+      // Create pool as soon as resources are available
+      static bool hasPool = false;
+      if (!hasPool && Broodwar->canMake(UnitTypes::Enum::Zerg_Spawning_Pool))
+      {
+        // Return cargo before morphing into pool
+        if (u->isCarryingGas() || u->isCarryingMinerals())
+        {
+          u->returnCargo();
+        }
+        // Suitable location
+        TilePosition buildLocation = Broodwar->getBuildLocation(UnitTypes::Enum::Zerg_Spawning_Pool, u->getTilePosition());
+        // Attempt to build pool
+        if (!u->build(UnitTypes::Enum::Zerg_Spawning_Pool, buildLocation))
+        {
+          // If the call fails, then print the last error message
+          Broodwar << Broodwar->getLastError() << std::endl;
+        }
+        else
+        {
+          hasPool = true;
+        }
+      }
       // if our worker is idle
       if ( u->isIdle() )
       {
@@ -129,7 +151,7 @@ void ExampleAIModule::onFrame()
     {
 
       // Order the depot to construct more workers! But only when it is idle.
-      if ( u->isIdle() && !u->train(u->getType().getRace().getWorker()) )
+      if (u->isIdle() && !u->train(UnitTypes::Enum::Zerg_Zergling))
       {
         // If that fails, draw the error at the location so that you can visibly see what went wrong!
         // However, drawing the error once will only appear for a single frame
@@ -186,6 +208,10 @@ void ExampleAIModule::onFrame()
         } // closure: insufficient supply
       } // closure: failed to train idle unit
 
+    }
+    else if (u->getType() == UnitTypes::Enum::Zerg_Zergling && u->isIdle())
+    {
+      u->attack(u->getClosestUnit(IsEnemy));
     }
 
   } // closure: unit iterator
