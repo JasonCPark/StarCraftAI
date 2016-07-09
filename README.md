@@ -10,7 +10,7 @@ If building from source:
 - Download this repo and place the files in the BWAPI directory.
 - Build FourPool.sln in Microsoft Visual Studio.
 
-The already compiled DLL is also available in this repository.
+The already compiled DLL is also available in this repository in Release/FourPool.dll.
 
 - Copy the DLL (FourPool.dll) to bwapi-data/AI/ in your Starcraft directory.
 - Run ChaosLauncher (as admin) found inside your BWAPI directory.
