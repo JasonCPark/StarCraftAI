@@ -1,10 +1,10 @@
 # StarCraftFourPoolAI
 
-A basic artificial intelligence for Starcraft: Broodwar running a 4 Pool build.
+A basic artificial intelligence for Starcraft: Broodwar running a 4 Pool build. Made possible by Adam Heinermann's [Broodwar API](https://github.com/bwapi/bwapi).
 
 <strong>How to Run</strong>
 - Install Starcraft: Broodwar and update to version 1.16.1.
-- Download the latest version of BroodWar API [here](https://github.com/bwapi/bwapi).
+- Download the latest version of Broodwar API [here](https://github.com/bwapi/bwapi).
 
 If building from source:
 - Download this repo and place the files in the BWAPI directory.
