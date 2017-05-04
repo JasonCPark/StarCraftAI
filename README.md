@@ -1,4 +1,4 @@
-# StarCraftFourPoolAI
+# StarCraftAI
 
 A basic artificial intelligence for Starcraft: Broodwar running a 4 Pool build. Made possible by Adam Heinermann's [Broodwar API](https://github.com/bwapi/bwapi).
 
