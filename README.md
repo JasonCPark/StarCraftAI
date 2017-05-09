@@ -1,6 +1,6 @@
 # StarCraftAI
 
-A basic artificial intelligence for Starcraft: Broodwar running a 4 Pool build. Made possible by Adam Heinermann's [Broodwar API](https://github.com/bwapi/bwapi).
+A basic artificial intelligence for Starcraft: Broodwar. Made possible by Adam Heinermann's [Broodwar API](https://github.com/bwapi/bwapi).
 
 <strong>How to Run</strong>
 - Install Starcraft: Broodwar and update to version 1.16.1.
