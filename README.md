@@ -8,14 +8,14 @@ A basic artificial intelligence for Starcraft: Broodwar. Made possible by Adam H
 
 If building from source:
 - Download this repo and place the files in the BWAPI directory.
-- Build FourPool.sln in Microsoft Visual Studio.
+- Build SCBot.sln in Microsoft Visual Studio.
 
-The already compiled DLL is also available in this repository in Release/FourPool.dll.
+The already compiled DLL is also available in this repository in Release/SCBot.dll.
 
-- Copy the DLL (FourPool.dll) to bwapi-data/AI/ in your Starcraft directory.
+- Copy the DLL (SCBot.dll) to bwapi-data/AI/ in your Starcraft directory.
 - Run ChaosLauncher (as admin) found inside your BWAPI directory.
 - Tick "BWAPI Injector (1.16.1) RELEASE" and hit config.
-- Change "ai = bwapi-data/AI/ExampleAIModule.dll" to "ai = bwapi-data/AI/FourPool.dll" and close the text file.
+- Change "ai = bwapi-data/AI/ExampleAIModule.dll" to "ai = bwapi-data/AI/SCBot.dll" and close the text file.
 
 To run only the AI:
 - Hit start in ChaosLauncher, this should run SC:BW.
